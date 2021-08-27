@@ -45,7 +45,7 @@ import company2 from './images/partners/company2.png';
 import company3 from './images/partners/company3.png';
 import company4 from './images/partners/company4.png';
 import company5 from './images/partners/company5.png';
-import { colors, fontFamily } from './theme';
+import { breakpoint, colors, fontFamily } from './theme';
 import { Rule } from './types';
 
 const heroStyle: Rule = () => ({
@@ -54,8 +54,12 @@ const heroStyle: Rule = () => ({
 });
 
 const heroContentStyle: Rule = () => ({
-  marginTop: '180px',
-  marginBottom: '264px',
+  marginTop: '60px',
+  marginBottom: '60px',
+  [breakpoint.md]: {
+    marginTop: '180px',
+    marginBottom: '264px',
+  },
 });
 
 const welcomeTextStyle: Rule = () => ({
@@ -100,8 +104,11 @@ const heroSupportTextStyle: Rule = () => ({
 
 const heroSupportNumberStyle: Rule = () => ({
   flex: 1,
-  paddingLeft: '112px',
+  paddingLeft: '50px',
   position: 'relative',
+  [breakpoint.md]: {
+    paddingLeft: '112px',
+  },
 });
 
 const heroOnlineSupportTitleStyle: Rule = () => ({
@@ -137,13 +144,19 @@ const heroImageStyle: Rule = () => ({
   '> img': {
     maxHeight: '100%',
   },
+  display: 'none',
+  [breakpoint.md]: {
+    display: 'block',
+  },
 });
 
 const factsContainerStyle: Rule = () => ({
-  position: 'absolute',
-  width: '100%',
-  bottom: '-50px',
-  left: 0,
+  [breakpoint.md]: {
+    position: 'absolute',
+    width: '100%',
+    bottom: '-50px',
+    left: 0,
+  },
 });
 
 const heroContainerStyle = {
@@ -151,36 +164,60 @@ const heroContainerStyle = {
 };
 
 const categoriesSectionStyle: Rule = () => ({
-  marginTop: '170px',
-  marginBottom: '100px',
+  marginTop: '60px',
+  marginBottom: '60px',
+  [breakpoint.md]: {
+    marginTop: '170px',
+    marginBottom: '100px',
+  },
 });
 
 const availableCoursesStyle: Rule = () => ({
   backgroundColor: '#062a35',
-  padding: '130px 0',
+  padding: '60px 0',
+  [breakpoint.md]: { padding: '130px 0' },
 });
 
 const galleryStyle: Rule = () => ({
-  padding: '130px 0 100px',
+  padding: '60px 0 60px',
+  [breakpoint.md]: {
+    padding: '130px 0 100px',
+  },
 });
 
 const instructorsSectionStyle: Rule = () => ({
   backgroundColor: '#eaf4f7',
-  padding: '130px 0',
+  padding: '60px 0',
+  [breakpoint.md]: {
+    padding: '130px 0',
+  },
 });
 
 const feedbackSectionStyle: Rule = () => ({
   backgroundColor: '#062a35',
-  padding: '130px 0',
+  padding: '60px 0',
+  [breakpoint.md]: {
+    padding: '130px 0',
+  },
 });
 
 const careerSection: Rule = () => ({
   backgroundColor: '#eaf4f7',
-  padding: '130px 0',
+  padding: '60px 0',
+  [breakpoint.md]: {
+    padding: '130px 0',
+  },
 });
 
 const careerImages: Rule = () => ({
   position: 'relative',
+  marginBottom: '30px',
+  [breakpoint.md]: {
+    marginBottom: '0',
+  },
+  '> img': {
+    maxWidth: '100%',
+  },
 });
 
 const careerSmallImage: Rule = () => ({
@@ -189,6 +226,10 @@ const careerSmallImage: Rule = () => ({
   height: '351px',
   bottom: '-60px',
   right: '-120px',
+  display: 'none',
+  [breakpoint.md]: {
+    display: 'block',
+  },
 });
 
 const instructorDescription: Rule = () => ({
@@ -200,13 +241,20 @@ const instructorDescription: Rule = () => ({
 
 const clientSection: Rule = () => ({
   backgroundColor: colors.orange,
-  padding: '80px 0',
+  padding: '80px 0 20px',
+  [breakpoint.md]: {
+    padding: '80px 0',
+  },
 });
 
 const clientLogosStyle: Rule = () => ({
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',
+  flexWrap: 'wrap',
+  '> img': {
+    marginBottom: '60px',
+  },
 });
 
 const footerStyle: Rule = () => ({
@@ -234,6 +282,20 @@ const footerSeparatorStyle: Rule = () => ({
   backgroundColor: colors.orange,
   height: '2px',
   width: '200px',
+});
+
+const factContainer = () => ({
+  marginBottom: '30px',
+  [breakpoint.md]: {
+    marginBottom: '0',
+  },
+});
+
+const feedbackCardContainer = () => ({
+  justifyContent: 'center',
+  [breakpoint.md]: {
+    justifyContent: 'flex-start',
+  },
 });
 
 const Home: React.FC<PageProps> = () => {
@@ -284,28 +346,28 @@ const Home: React.FC<PageProps> = () => {
           </Row>
           <div className={css(factsContainerStyle)}>
             <Row>
-              <Col md={3}>
+              <Col md={3} sm={6} className={css(factContainer)}>
                 <Fact
                   icon={faUsers}
                   title="3045+"
                   subtitle="Satisfied Students"
                 />
               </Col>
-              <Col md={3}>
+              <Col md={3} sm={6} className={css(factContainer)}>
                 <Fact
                   icon={faBook}
                   title="7852+"
                   subtitle="Available Courses"
                 />
               </Col>
-              <Col md={3}>
+              <Col md={3} sm={6} className={css(factContainer)}>
                 <Fact
                   icon={faGraduationCap}
                   title="9862+"
                   subtitle="Graduate Students"
                 />
               </Col>
-              <Col md={3}>
+              <Col md={3} sm={6} className={css(factContainer)}>
                 <Fact
                   icon={faLaptopCode}
                   title="8963+"
@@ -322,7 +384,7 @@ const Home: React.FC<PageProps> = () => {
           <SectionTitle>Course Categories</SectionTitle>
           <Row>
             {courseCategories.map(({ title, description }) => (
-              <Col md={3}>
+              <Col md={3} sm={6}>
                 <CourseCategoryCard
                   title={title}
                   description={description}
@@ -339,7 +401,7 @@ const Home: React.FC<PageProps> = () => {
           <SectionTitle color="white">Available Courses</SectionTitle>
           <Row>
             {courses.map((course) => (
-              <Col md={4}>
+              <Col md={4} sm={6}>
                 <CourseCard {...course} key={course.title} />
               </Col>
             ))}
@@ -359,7 +421,7 @@ const Home: React.FC<PageProps> = () => {
           <SectionTitle>Expert Instructors</SectionTitle>
           <Row>
             {instructors.map((instructor) => (
-              <Col md={3} key={instructor.title}>
+              <Col md={3} sm={6} key={instructor.title}>
                 <InstructorCard {...instructor} />
               </Col>
             ))}
@@ -371,10 +433,10 @@ const Home: React.FC<PageProps> = () => {
           <SectionSubtitle>Students Feedback</SectionSubtitle>
           <SectionTitle color="white">What Our Students Say</SectionTitle>
           <Row>
-            <Col md={6}>
+            <Col md={6} className={css(feedbackCardContainer)}>
               <FeedbackCard />
             </Col>
-            <Col md={6}>
+            <Col md={6} className={css(feedbackCardContainer)}>
               <FeedbackGallery />
             </Col>
           </Row>
@@ -412,13 +474,13 @@ const Home: React.FC<PageProps> = () => {
                   <InstructorFact />
                 </div>
                 <Row style={{ marginTop: 50 }}>
-                  <Col md={6}>
+                  <Col sm={6}>
                     <Button width="100%" type="orange">
                       join with us &nbsp;&nbsp;
                       <FontAwesomeIcon icon={faArrowRight} />
                     </Button>
                   </Col>
-                  <Col md={6}>
+                  <Col sm={6}>
                     <Button width="100%" type="white">
                       Become a Partner
                     </Button>
@@ -441,50 +503,52 @@ const Home: React.FC<PageProps> = () => {
         </Container>
       </section>
       <footer className={css(footerStyle)}>
-        <Row>
-          <Col md={3}>
-            <LogoWhite />
-          </Col>
-          <Col md={1}></Col>
-          <Col md={2}>
-            <FooterSocialIcon
-              icon={faFacebookF}
-              title="Facebook"
-              color="#1771e6"
-            />
-          </Col>
-          <Col md={2}>
-            <FooterSocialIcon
-              icon={faTwitter}
-              title="Twitter"
-              color="#1da1f2"
-            />
-          </Col>
-          <Col md={2}>
-            <FooterSocialIcon
-              icon={faYoutube}
-              title="YouTube"
-              color="#ff0000"
-            />
-          </Col>
-          <Col md={2}>
-            <FooterSocialIcon
-              icon={faInstagram}
-              title="Instagram"
-              color="#de0e88"
-            />
-          </Col>
-        </Row>
-        <div className={css(footerSeparatorContainerStyle)}>
-          <div className={css(footerSeparatorStyle)} />
-        </div>
-        <div className={css(copyrightStyle)}>
-          Copyright © 2020{' '}
-          <span style={{ color: 'white' }}>
-            <b>Edu</b>Plus
-          </span>{' '}
-          All Rights Reserved.
-        </div>
+        <Container>
+          <Row>
+            <Col md={3}>
+              <LogoWhite />
+            </Col>
+            <Col md={1}></Col>
+            <Col md={2} sm={4} xs={6}>
+              <FooterSocialIcon
+                icon={faFacebookF}
+                title="Facebook"
+                color="#1771e6"
+              />
+            </Col>
+            <Col md={2} sm={4} xs={6}>
+              <FooterSocialIcon
+                icon={faTwitter}
+                title="Twitter"
+                color="#1da1f2"
+              />
+            </Col>
+            <Col md={2} sm={4} xs={6}>
+              <FooterSocialIcon
+                icon={faYoutube}
+                title="YouTube"
+                color="#ff0000"
+              />
+            </Col>
+            <Col md={2} sm={4} xs={6}>
+              <FooterSocialIcon
+                icon={faInstagram}
+                title="Instagram"
+                color="#de0e88"
+              />
+            </Col>
+          </Row>
+          <div className={css(footerSeparatorContainerStyle)}>
+            <div className={css(footerSeparatorStyle)} />
+          </div>
+          <div className={css(copyrightStyle)}>
+            Copyright © 2020{' '}
+            <span style={{ color: 'white' }}>
+              <b>Edu</b>Plus
+            </span>{' '}
+            All Rights Reserved.
+          </div>
+        </Container>
       </footer>
     </main>
   );

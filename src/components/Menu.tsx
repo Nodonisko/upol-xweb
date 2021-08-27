@@ -19,6 +19,7 @@ const menuStyle: Rule = () => ({
   fontWeight: 500,
   display: 'flex',
   fontFamily: fontFamily.roboto,
+  flexWrap: 'wrap',
 });
 
 const menuItemStyle: Rule = () => ({

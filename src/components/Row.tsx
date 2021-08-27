@@ -12,8 +12,11 @@ const rowStyle: Rule = () => ({
   flex: 1,
 });
 
-export const Row = (props: React.HTMLAttributes<HTMLDivElement>) => {
+export const Row = ({
+  className = '',
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const { css } = useFela();
 
-  return <div className={css(rowStyle)} {...props} />;
+  return <div className={`${css(rowStyle)} ${className}`} {...props} />;
 };

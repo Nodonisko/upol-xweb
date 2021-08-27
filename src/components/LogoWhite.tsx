@@ -2,13 +2,17 @@ import React from 'react';
 import { useFela } from 'react-fela';
 
 import logo from '../images/logoWhite.png';
-import { fontFamily } from '../theme';
+import { breakpoint, fontFamily } from '../theme';
 import { Rule } from '../types';
 
 const logoStyle = () => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  marginBottom: '60px',
+  [breakpoint.md]: {
+    marginBottom: 0,
+  },
 });
 
 const logoTextStyle: Rule = () => ({

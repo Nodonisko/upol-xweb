@@ -5,7 +5,7 @@ import { useFela } from 'react-fela';
 
 import avatar from '../images/avatar.jpg';
 import quote from '../images/quote.png';
-import { colors, fontFamily } from '../theme';
+import { breakpoint, colors, fontFamily } from '../theme';
 import { Rule } from '../types';
 import { Button } from './Button';
 
@@ -15,9 +15,12 @@ interface FeedbackCardProps {
 
 const feedbackCardStyle = () => ({
   display: 'flex',
-  width: '450px',
+  width: '90%',
   backgroundColor: '#eaf4f7',
   marginTop: '20px',
+  [breakpoint.md]: {
+    width: '450px',
+  },
 });
 
 const insideCardStyle: Rule = () => ({

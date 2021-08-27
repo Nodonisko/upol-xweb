@@ -3,6 +3,7 @@ import { faPersonBooth, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useFela } from 'react-fela';
+import { breakpoint } from '../theme';
 
 import { Rule } from '../types';
 import { Button } from './Button';
@@ -28,17 +29,34 @@ const socialLinksStyle: Rule = () => ({
 });
 
 const logoContainerStyle: Rule = () => ({
-  position: 'absolute',
-  left: '-320px',
+  [breakpoint.md]: {
+    position: 'absolute',
+    left: '-320px',
+  },
+  [breakpoint.sm]: {
+    justifyContent: 'center',
+  },
+  [breakpoint.xs]: {
+    justifyContent: 'center',
+  },
 });
 
 const socialLinksContainerStyle: Rule = () => ({
-  position: 'absolute',
-  right: '-250px',
+  justifyContent: 'center',
+  marginTop: '30px',
+  [breakpoint.md]: {
+    position: 'absolute',
+    right: '-250px',
+    marginTop: 0,
+  },
 });
 
 const menuContainerStyle: Rule = () => ({
-  paddingTop: '15px',
+  marginTop: '30px',
+  justifyContent: 'center',
+  [breakpoint.md]: {
+    marginTop: '15px',
+  },
 });
 
 export const Header = () => {
@@ -50,8 +68,8 @@ export const Header = () => {
         <Col md={3} className={css(logoContainerStyle)}>
           <Logo />
         </Col>
-        <Col md={6}>
-          <div className={css(menuContainerStyle)}>
+        <Col md={6} className={css(menuContainerStyle)}>
+          <div>
             <Menu />
           </div>
         </Col>

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useFela } from 'react-fela';
 import { Row, Col } from '.';
-import { colors, fontFamily } from '../theme';
+import { breakpoint, colors, fontFamily } from '../theme';
 
 interface InstructorFactProps {
   children: React.ReactNode;
@@ -33,6 +33,11 @@ const factDescription = () => ({
   marginBottom: 0,
 });
 
+const instructorSecondFact = () => ({
+  marginTop: '30px',
+  [breakpoint.md]: { border: 0, paddingLeft: '15px', marginTop: 0 },
+});
+
 export const InstructorFact = ({ children, ...props }: InstructorFactProps) => {
   const { css } = useFela();
 
@@ -51,8 +56,7 @@ export const InstructorFact = ({ children, ...props }: InstructorFactProps) => {
       </Col>
       <Col md={6}>
         <div
-          className={css(InstructorFactStyle)}
-          style={{ border: 0, paddingLeft: 15 }}
+          className={`${css(InstructorFactStyle)} ${css(instructorSecondFact)}`}
         >
           <div className={css(factIcon)}>
             <FontAwesomeIcon icon={faBook} />

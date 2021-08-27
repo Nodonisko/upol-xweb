@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useState } from 'react';
 import { useFela } from 'react-fela';
-import { colors, fontFamily } from '../theme';
+import { breakpoint, colors, fontFamily } from '../theme';
 import { Rule } from '../types';
 import { SRLWrapper } from 'simple-react-lightbox';
 import { Row } from './Row';
@@ -20,13 +20,20 @@ const galleryStyle: Rule = () => ({
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',
+
+  [breakpoint.md]: {
+    alignItems: 'center',
+  },
 });
 
 const galleryTabsStyle = () => ({
   display: 'flex',
-
   borderBottom: '1px solid #dcdcdc',
   padding: '0 40px',
+  overflow: 'scroll',
+  [breakpoint.md]: {
+    overflow: 'auto',
+  },
 });
 
 const tabStyle = () => ({
@@ -85,6 +92,10 @@ const imageOverlay: Rule = () => ({
   fontSize: '50px',
 });
 
+const tabsContainer = () => ({
+  display: 'flex',
+});
+
 const galleryTabs = [
   'Show All',
   'University',
@@ -105,10 +116,10 @@ export const Gallery = ({ children, ...props }: GalleryProps) => {
   galleryImages.add(getRandomNumber(0, 15));
   galleryImages.add(getRandomNumber(0, 15));
   galleryImages.add(getRandomNumber(0, 15));
-  console.log(gallery);
+
   return (
     <div className={css(galleryStyle)}>
-      <div>
+      <div className={css(tabsContainer)}>
         <div className={css(galleryTabsStyle)}>
           {galleryTabs.map((tabName) => (
             <div
@@ -132,7 +143,7 @@ export const Gallery = ({ children, ...props }: GalleryProps) => {
         <SRLWrapper>
           <Row>
             {[...galleryImages].map((imageIndex) => (
-              <Col md={4} key={imageIndex}>
+              <Col md={4} sm={6} key={imageIndex}>
                 <div>
                   <a
                     href={gallery[imageIndex]}
